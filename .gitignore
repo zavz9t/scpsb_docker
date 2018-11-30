@@ -3,3 +3,4 @@
 .idea/
 !code/.gitkeep
 code/
+db/data

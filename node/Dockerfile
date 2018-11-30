@@ -1,5 +1,10 @@
 FROM node:10.6
 
+RUN apt-get update && apt-get install -y \
+        git \
+        mc \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -p /root/.ssh \
     && echo "\tHost *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 

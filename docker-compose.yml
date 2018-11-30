@@ -18,8 +18,10 @@ services:
         environment:
             - REPOSITORY=${CODE_REPOSITORY}
             - REDIS_URL=scpsb-db:6379
+            - SENTRY_DSN=${SENTRY_DSN}
             - BOT_TOKEN=${BOT_TOKEN}
             - CHAT_ID=${CHAT_ID}
+            - NTBA_FIX_319=1
         volumes:
             - ${SSH_KEY}:/root/.ssh/id_rsa:ro
             - ~/.gitconfig:/root/.gitconfig:ro
