@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+    scpsb-db:
+        build: ./db
+        container_name: scpsb-db
+        volumes:
+            - ./db/data:/data
+    scpsb-node:
+        build:
+            context: ./node
+            args:
+                USER_ID: ${UID}
+                GROUP_ID: ${GID}
+        container_name: scpsb-node
+        depends_on:
+            - scpsb-db
+        environment:
+            - REPOSITORY=${CODE_REPOSITORY}
+            - REDIS_URL=scpsb-db:6379
+            - BOT_TOKEN=${BOT_TOKEN}
+            - CHAT_ID=${CHAT_ID}
+        volumes:
+            - ${SSH_KEY}:/root/.ssh/id_rsa:ro
+            - ~/.gitconfig:/root/.gitconfig:ro
+
+networks:
+    default:
+        external:
+            name: scpsb-network

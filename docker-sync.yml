@@ -1,0 +1,15 @@
+options:
+    verbose: true
+    max-attempts: 7
+
+version: '2'
+
+syncs:
+    scpsb-unison-sync:
+        src: './code'
+        sync_strategy: 'unison'
+        sync_userid: ${UID}
+        sync_excludes_type: 'Name'
+        sync_excludes:
+            - '.idea'
+            - 'node_modules'

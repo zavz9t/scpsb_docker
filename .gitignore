@@ -1,0 +1,5 @@
+.docker-sync/
+.env
+.idea/
+!code/.gitkeep
+code/

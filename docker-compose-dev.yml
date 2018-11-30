@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    scpsb-node:
+        volumes:
+            - scpsb-unison-sync:/var/www:nocopy
+
+volumes:
+    scpsb-unison-sync:
+        external: true
